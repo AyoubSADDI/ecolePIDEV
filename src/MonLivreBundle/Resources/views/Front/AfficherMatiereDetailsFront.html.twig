@@ -1,0 +1,57 @@
+
+{% extends "@User/Page_Apprenant.html.twig" %}
+
+{% block titre %} {{ mat.matiere}}{% endblock %}
+{% block body %}
+    <!-- steps -->
+    <div class='grid_row clearfix' style='padding-top: 50px;padding-bottom: 50px;'>
+        <div class='grid_col grid_col_6'>
+            <div class='ce clearfix'>
+                <div>
+                    <ul class="checkmarks_style">
+                        <li>Nbr d'heure : {{ mat.nbheure }}</li>
+                        <li> Categorie : {{ mat.Categorie.nomCat }} </li>
+    {% if insc == null %}
+        <p class="mb-0"><a href="{{ path('PaticiperCour',{'id':mat.id}) }}" class="btn btn-success">Inscrire <span class="ion-ios-arrow-round-forward"></span></a></p>
+    {% else %}
+
+        <p class="mb-0"><a href="{{ path('DésinscriptionCour',{'id':mat.id}) }}" class="btn btn-danger">Désinscrire <span class="ion-ios-arrow-round-forward"></span></a></p>
+{% endif %}
+
+        </ul>
+                </div>
+            </div>
+        </div>
+        <div class='grid_col grid_col_6'>
+            <div class='ce clearfix'>
+                <div>
+                    <p><img class="aligncenter size-full image-type noborder" src="{{ asset('Upload/')}}{{ mat.nomfile }}" alt="nanny" width="1100" height="550" /></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if insc == null %}
+        {% else %}
+
+            <div class='grid_row clearfix'>
+            <!-- sevice item -->
+            {% for e in livre  %}
+                <div class='grid_col grid_col_4'>
+
+                    <div class='ce clearfix'>
+
+                        <div>
+                            <h2 class="ce_title heading" style="text-align: center;"><a href="{{ asset('Upload/' ~ e.video) }}">{{ e.NomCour }}</a> </h2>
+                            <p style="text-align: center;">  Description :{{ e.description }}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            {% endfor %}    {% endif %}
+
+
+
+
+{% endblock %}

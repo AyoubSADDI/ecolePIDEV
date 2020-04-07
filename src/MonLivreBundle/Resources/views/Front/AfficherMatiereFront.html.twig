@@ -1,0 +1,30 @@
+
+
+{% extends "@User/Page_Apprenant.html.twig" %}
+
+{% block titre %} Our Matiere {% endblock %}
+{% block body %}
+
+    <div class='grid_row clearfix'>
+        <!-- sevice item -->
+        {% for e in mat  %}
+            <div class='grid_col grid_col_4'>
+
+                <div class='ce clearfix'>
+
+                    <div>
+                        <p style="text-align: center;"><img class="aligncenter size-full image-type noborder" src="{{ asset('Upload/')}}{{ e.nomfile }}" alt="babysitting" width="150" height="150" /></p>
+                        <h2 class="ce_title heading" style="text-align: center;">Nom :{{ e.matiere }} </h2>
+                        <p style="text-align: center;">  Nombre D'heure :{{ e.nbheure }}</p>
+                        <p style="text-align: center;"><a href='{{ path('Front_AfficheMonCourDetails',{'id':e.id}) }}' class='cws_button mini'>Details</a>
+                    </div>
+
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

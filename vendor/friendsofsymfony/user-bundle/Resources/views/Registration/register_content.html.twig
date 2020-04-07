@@ -1,0 +1,9 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'input-group'}}) }}
+    {{ form_widget(form) }}
+{{ form_widget(form.cin, { 'attr': {'class': 'input--style-3'} }) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
